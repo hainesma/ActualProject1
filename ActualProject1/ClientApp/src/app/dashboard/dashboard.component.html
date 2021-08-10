@@ -1,0 +1,48 @@
+
+<!--This is the dashboard page need to load active user First Name into this html page-->
+
+<div>
+  <h1 style="text-align:center">Welcome </h1>
+</div>
+
+<div>
+  <!--These divs need to have an *ngIf statement that pulls in the users selected Fitness preference from the survey-->
+  <h2 style="text-align:center">Fitness</h2>
+  <div>
+    <app-yoga></app-yoga>
+  </div>
+
+  <div>
+    <app-lift></app-lift>
+  </div>
+</div>
+
+
+<div>
+  <!--These divs need to have an *ngIf statement that pulls in the users selected Food preference from the survey-->
+  <h2 style="text-align:center">
+    Food Suggestion
+  </h2>
+  <div>
+    <app-recipe></app-recipe>
+  </div>
+
+</div>
+
+<div>
+  <h2 style="text-align:center">
+    Inspiration
+  </h2>
+  <!--These divs need to have an *ngIf statement that pulls in the users selected philosophy preference from the survey-->
+  <div>
+    <app-stoic-quote></app-stoic-quote>
+  </div>
+
+  <div>
+    <app-kanye></app-kanye>
+  </div>
+
+  <div>
+    <app-buddha></app-buddha>
+  </div>
+</div>

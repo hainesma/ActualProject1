@@ -1,0 +1,17 @@
+
+
+<div>
+  <p>Recipe Label: {{singleRecipe.label}}</p>
+  <img src="{{singleRecipe.image}}">
+  <p>Total Calories: {{singleRecipe.calories}}</p>
+  <p>Servings Yield: {{singleRecipe.yield}}</p>
+  <p>Calories Per Serving: {{singleRecipe.servingcalories}}</p>
+  <!--Need to hide this if time to prep is reported as zero from the API observable-->
+  <p>Time to Prepare:{{singleRecipe.totalTime}} minutes</p>
+  <a href="{{singleRecipe.url}}">Recipe Instructions from {{singleRecipe.source}}</a>
+
+  
+  <!-- I would like to include a hidden div here that includes the nutrtional information to the provided meal though
+    I don't think doing this is in the scope of the barebones MVP the Data is available, also to iterate through the total nutritional
+    content of the meal and to be able to report an indiviual serving sizes nutrtional info wasn't immediately clear how I would achieve this goal' -Troy-->
+</div>

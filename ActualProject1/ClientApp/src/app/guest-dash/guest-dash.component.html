@@ -1,0 +1,64 @@
+<h2>Guest Dash</h2>
+
+<p> Please Input Philosophy</p>
+<div>
+  <form #guestprefForm="ngForm" (ngSubmit)="getGuestReccomendations(guestprefForm)">
+    <input ngModel type="text" id="searchTerm" name="searchTerm" placeholder="Enter Search Term Here" />
+
+    
+
+
+    <select ngModel name="foodRegimen">
+      <option value="vegan">Vegan</option>
+      <option value="keto-friendly">Keto</option>
+      <option value="paleo">Paleo</option>
+    </select>
+
+    <select ngModel name="philosophySchool">
+      <option value="Stoic">Stoic</option>
+      <option value="Kanye">Kanye</option>
+      <option value="Buddha">Buddha</option>
+    </select>
+
+    <input type="submit" />
+  </form>
+</div>
+
+<div>
+  <div *ngIf="isRecipeSearchDone">
+    <p>Recipe Label: {{recipe.label}}</p>
+    <img src="{{recipe.image}}">
+    <p>Total Calories: {{recipe.calories}}</p>
+    <p>Servings Yield: {{recipe.yield}}</p>
+    <p>Calories Per Serving: {{recipe.servingcalories}}</p>
+    <!--Need to hide this if time to prep is reported as zero from the API observable-->
+    <p>Time to Prepare:{{recipe.totalTime}} minutes</p>
+    <a href="{{recipe.url}}">Recipe Instructions from {{recipe.source}}</a>
+
+
+
+  </div>
+
+  <br />
+  <br />
+
+
+  <div *ngIf="isCurrentPhilosophyStoic">
+    <p>Quote</p>
+    <p>"{{quote[0].body}}"</p>
+    <p>-{{quote[0].author}}</p>
+  </div>
+  <div *ngIf="isCurrentPhilosophyKanye">
+    <p>"{{quote.quote}}"</p>
+    <p>Author: Kanye West</p>
+  </div>
+  <div *ngIf="isCurrentPhilosophyBuddha">
+    <p>"{{quote.quote}}"</p>
+    <p> -{{quote.author}}</p>
+  </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
