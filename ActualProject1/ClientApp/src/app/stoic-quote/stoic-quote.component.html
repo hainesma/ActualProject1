@@ -1,0 +1,9 @@
+<div>
+  <h3>Stoic Quote</h3>
+  <!--This next line produces a lot of errors in the console but appears to working without issue, josh had reccomended that
+    I throw the whole div into the ngIf and while it apearred to have worked initially all the errors appear to still be here-->
+  <div *ngIf="quote[0]!==null">
+    <p>"{{quote[0].body}}"</p>
+    <p>-{{quote[0].author}}</p>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Project2_WellnessAppDbFirst.Models;
+using ActualProject1.Models;
 
 #nullable disable
 
