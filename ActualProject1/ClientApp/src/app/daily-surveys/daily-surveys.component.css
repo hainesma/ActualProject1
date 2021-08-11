@@ -3,6 +3,8 @@ input[type="radio"] {
 }
 .slidecontainer {
   width: 35%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slider {
@@ -38,4 +40,6 @@ input[type="radio"] {
 .modal-body {
   text-align: center;
   width: 100%;
+  font-family: Verdana;
+  font-weight: 600;
 }
