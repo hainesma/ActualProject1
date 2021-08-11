@@ -1,4 +1,14 @@
-<h1>Assessment Manager</h1>
+<div class="card text-center card-width-component">
+  <div class="card-header">
+  
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Daily Check-In</h5>
+  
+
+
+
 <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Take a new assessment</button>
 <ng-template #mymodal let-modal>
   <div class="modal-header">
@@ -47,10 +57,18 @@
     <div class="modal-footer">
     </div>
   </ng-template>
-<h3>Past Asessments</h3>
+<h5>Past Asessments</h5>
 <div *ngFor="let s of surveys">
   <a [routerLink]="['/survey',s.Id]"> Assessment:{{s.Id}}</a>
   <button type="button" class="close" aria-label="Close" (click)="removeSurvey(s.Id)">
     <span aria-hidden="true">×</span>
   </button>
+</div>
+
+<!-- <a href="#" class="btn btn-primary">Sign up</a> -->
+
+</div>
+<div class="card-footer text-muted">
+  
+</div>
 </div>
