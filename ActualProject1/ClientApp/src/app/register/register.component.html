@@ -1,7 +1,7 @@
 <h2> Register User Profile</h2>
 
 <div>
-  <form #profileForm="ngForm" (ngSubmit)="postUserProfile(profileForm)">
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
     <input ngModel type="text" id="userProfile" name="email" placeholder="Email" />
     <br />
     <br />

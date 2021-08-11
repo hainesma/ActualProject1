@@ -1,0 +1,13 @@
+<h2> Please Enter Email and Password</h2>
+
+<div>
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <input ngModel type="text" id="userProfile" name="email" placeholder="Email" />
+    <br />
+    <br />
+    <input ngModel type="password" id="userProfile" name="password" placeholder="password" />
+    <br />
+    <br />
+    <input type="submit" />
+  </form>
+</div>
