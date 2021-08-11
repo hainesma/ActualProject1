@@ -1,9 +1,32 @@
-<div>
-  <h2>Random Yoga Pose</h2>
+<!-- <div>
+<div class="border">
+  <div class="inner-rectangle">
+    <h2>Yoga Pose</h2>
 
 
-  <p>Sanskrit Name: {{pose.sanskrit_name}}</p>
-  <p>Translation: {{pose.english_name}}</p>
-  <img src="{{pose.img_url}}" />
+    <p>Sanskrit Name: {{pose.sanskrit_name}}</p>
+    <p>Translation: {{pose.english_name}}</p>
+    <img src="{{pose.img_url}}" />
+  </div>
+</div>
+</div> -->
 
+<div class="card text-center card-width-component">
+  <div class="card-header">
+  
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">Yoga Pose</h5>
+    <p class="card-text">Sanskrit Name: {{pose.sanskrit_name}}</p>
+    <p class="card-text">Translation: {{pose.english_name}}</p>
+    <img class="image" src="{{pose.img_url}}" />
+    <a href="#" class="btn btn-primary">Sign up</a>
+    <br />
+    <br/>
+    <a href="#" class="btn btn-primary">Log in</a>
+  </div>
+  <div class="card-footer text-muted">
+    
+  </div>
 </div>
