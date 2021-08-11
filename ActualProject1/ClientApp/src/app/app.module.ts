@@ -16,7 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuestDashComponent } from './guest-dash/guest-dash.component';
 import { DailySurveysComponent } from './daily-surveys/daily-surveys.component';
 import {UserProfileComponent} from './user-profile/user-profile.component'
-
+import { LoginComponent } from './login/login.component'
+import {RegisterComponent} from './register/register.component'
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import {UserProfileComponent} from './user-profile/user-profile.component'
     LiftComponent,
     DailySurveysComponent,
     UserProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,7 +44,10 @@ import {UserProfileComponent} from './user-profile/user-profile.component'
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'daily-surveys', component: DailySurveysComponent },
-      { path: 'register', component: UserProfileComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'user-dash', component: DashboardComponent },
+      
     ])
   ],
   providers: [],
