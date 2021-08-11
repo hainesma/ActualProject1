@@ -49,15 +49,15 @@
     Inspiration
   </h2>
   <!--These divs need to have an *ngIf statement that pulls in the users selected philosophy preference from the survey-->
-  <div>
+  <div *ngIf="isCurrentPhilosophyStoic">
     <app-stoic-quote></app-stoic-quote>
   </div>
 
-  <div>
+  <div *ngIf="isCurrentPhilosophyKanye">
     <app-kanye></app-kanye>
   </div>
 
-  <div>
+  <div *ngIf="isCurrentPhilosophyBuddha">
     <app-buddha></app-buddha>
   </div>
 </div>
