@@ -23,10 +23,10 @@
 <!--I think the *ngIf with the async pipe should load this div if the user is logged in but i'm not sure 100% and I can't test it from
   this IP address
 *ngIf="isAuthenticated() | async"-->
-<div>
+<div *ngIf="isLoggedIn">
   <app-dashboard></app-dashboard>
 </div>
-<div>
+<div *ngIf="!isLoggedIn">
   <app-guest-dash></app-guest-dash>
 </div>
 
