@@ -15,7 +15,9 @@ export class RecipeService {
   
   
 
-  constructor(private http: HttpClient, private loginService:LoginService ) { }
+  constructor(private http: HttpClient, private loginService: LoginService) {
+  
+  }
   
   public appId = "e3f8630c"
   public apiBase = "https://api.edamam.com/api/recipes/v2?type=public";
@@ -27,6 +29,8 @@ export class RecipeService {
   public FoodPreference = ""
 
 
+ 
+  
 
   callRecipe() {
     //this method returns an observable containing an array of ALL hits returned by the edaman nutrition recipe search API
