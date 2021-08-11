@@ -1,5 +1,7 @@
+/// <reference path="lift/lift.ts" />
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { getBaseUrl } from '../main';
 import { UserProfileData } from './register/userProfileData';
 
@@ -15,11 +17,12 @@ import { UserProfile } from './user-profile/userProfile';
 
 export class LoginService {
   http: HttpClient
-  constructor(http: HttpClient) {
+  constructor(http: HttpClient, private route:Router) {
 
     this.http = http;
   }
-
+  static currentUser: string = "";
+  
   baseUrl = getBaseUrl();
   register(email: string, password: string, firstName: string, birthDate: Date,mantra:string,foodRegimenFk:number,philosophySchoolFk:number) {
 
@@ -34,7 +37,17 @@ export class LoginService {
 
   login(email: string, password: string)
   {
+    this.http.get<any>(this.baseUrl + 'api/Login/Login/email=' + email + '&pw=' + password).subscribe(result => {
 
+      console.log(result)
+      if (result === true) {
+        LoginService.currentUser = email;
+      }
+      console.log(LoginService.currentUser)
+      this.route.navigateByUrl('');
+
+    })
+    
   }
 
 }
