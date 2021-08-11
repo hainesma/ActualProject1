@@ -2,7 +2,7 @@ export class DailySurveys {
   Id: number;
   UserId: number;
   emotionLevel: number;
-  energyLevel: number;
+  EnergyLevel: number;
   DailyGoal: string; 
   previousGoalAchieved: boolean; 
 }

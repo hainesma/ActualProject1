@@ -39,7 +39,11 @@ input[type="radio"] {
   }
 .modal-body {
   text-align: center;
-  width: 100%;
+ /* width: 100%;*/
   font-family: Verdana;
-  font-weight: 600;
+  font-weight:200;
+}
+.modal-title {
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serifl;
 }

@@ -9,7 +9,7 @@ namespace ActualProject1.Models
     {
         public UserProfiles()
         {
-            DailySurveys = new HashSet<DailySurvey>();
+            DailySurveys = new HashSet<DailySurveys>();
         }
 
         public int Id { get; set; }
@@ -23,6 +23,6 @@ namespace ActualProject1.Models
 
         public virtual FoodRegimen FoodRegimenFkNavigation { get; set; }
         public virtual PhilosophySchool PhilosphySchoolFkNavigation { get; set; }
-        public virtual ICollection<DailySurvey> DailySurveys { get; set; }
+        public virtual ICollection<DailySurveys> DailySurveys { get; set; }
     }
 }

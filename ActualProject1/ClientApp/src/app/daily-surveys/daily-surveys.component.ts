@@ -23,7 +23,6 @@ export class DailySurveysComponent {
   closeResult: string;
   public apiBase: string = "";
   public http: HttpClient = null;
-  currentUserId: any;
 
     /** DailySurveys ctor */ 
   constructor(private modalService: NgbModal, http: HttpClient/*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
@@ -49,20 +48,20 @@ export class DailySurveysComponent {
 
     let Id = form.form.value.Id;
     /** Attempting to connect Surveys to userprofiles  */
-    let UserId = parseInt(form.form.value.aspNetUserFk);
+   
     let emotion =  form.form.value.emotion * 1;
     let goal = form.form.value.goal;
     let achieved = form.form.value.previousGoalAchieved;
-    let energyLevel = form.form.value.energyLevel;
+    let EnergyLevel = form.form.value.EnergyLevel;
 
     if (achieved === "") {
       achieved = false;
     }
 
-    let surveys: DailySurveys = { Id: 0, UserId: this.currentUserId.sub, emotionLevel: emotion, energyLevel: energyLevel,DailyGoal: goal, previousGoalAchieved: achieved}
+    let surveys: DailySurveys = { Id: 0, UserId:0, emotionLevel: emotion, EnergyLevel: EnergyLevel,DailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)
-    this.http.post<DailySurveys>(this.apiBase + 'api/dailysurveys', surveys).subscribe(result => {
+    this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {
       console.log(result)
 
       this.surveys.push(result); 

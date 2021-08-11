@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using ActualProject1.Models;
+
 #nullable disable
 
 namespace ActualProject1.Models
 {
-    public partial class DailySurvey
+    public partial class DailySurveys
     {
         public int Id { get; set; }
         public int? UserId { get; set; }

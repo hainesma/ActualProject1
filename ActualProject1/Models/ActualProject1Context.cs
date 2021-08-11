@@ -21,7 +21,7 @@ namespace ActualProject1.Models
         {
         }
 
-        public virtual DbSet<DailySurvey> DailySurveys { get; set; }
+        public virtual DbSet<DailySurveys> DailySurveys { get; set; }
         public virtual DbSet<FoodRegimen> FoodRegimens { get; set; }
         public virtual DbSet<PhilosophySchool> PhilosophySchools { get; set; }
         public virtual DbSet<UserProfiles> UserProfiles { get; set; }
@@ -30,7 +30,6 @@ namespace ActualProject1.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer(connection);
             }
         }
@@ -39,7 +38,7 @@ namespace ActualProject1.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<DailySurvey>(entity =>
+            modelBuilder.Entity<DailySurveys>(entity =>
             {
                 entity.Property(e => e.DailyGoal).HasMaxLength(150);
 
