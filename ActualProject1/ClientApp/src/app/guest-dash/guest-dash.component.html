@@ -5,7 +5,8 @@
   <form #guestprefForm="ngForm" (ngSubmit)="getGuestReccomendations(guestprefForm)">
     <input ngModel type="text" id="searchTerm" name="searchTerm" placeholder="Enter Search Term Here" />
 
-    
+    <br />
+    <br />
 
 
     <select ngModel name="foodRegimen">
@@ -14,12 +15,16 @@
       <option value="paleo">Paleo</option>
     </select>
 
+    <br />
+    <br />
     <select ngModel name="philosophySchool">
       <option value="Stoic">Stoic</option>
       <option value="Kanye">Kanye</option>
       <option value="Buddha">Buddha</option>
     </select>
 
+    <br />
+    <br />
     <input type="submit" />
   </form>
 </div>

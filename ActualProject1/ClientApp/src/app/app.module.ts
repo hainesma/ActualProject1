@@ -16,6 +16,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GuestDashComponent } from './guest-dash/guest-dash.component';
 import { DailySurveysComponent } from './daily-surveys/daily-surveys.component';
 import {UserProfileComponent} from './user-profile/user-profile.component'
+import { LoginComponent } from './login/login.component'
+import {RegisterComponent} from './register/register.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -33,6 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LiftComponent,
     DailySurveysComponent,
     UserProfileComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -42,7 +46,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'daily-surveys', component: DailySurveysComponent },
-      { path: 'register', component: UserProfileComponent }
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'user-dash', component: DashboardComponent },
+      
     ])
   ],
   providers: [],
