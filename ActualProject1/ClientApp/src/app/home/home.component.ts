@@ -7,6 +7,10 @@ import { LoginService } from '../login.service';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+
+  isLoggedIn: boolean = false;
+  currentUserId: any;
+  userProfile = this.loginService.getProfileDetails(LoginService.currentUser)
   constructor(private loginService: LoginService) {
     //let user = authorizeService.getUser().subscribe((result): any => {
     //  console.log(result)
@@ -16,18 +20,21 @@ export class HomeComponent {
     this.checkForLoggedIn()
   }
 
-  isLoggedIn: boolean = false;
-  currentUserId: any;
+
   checkForLoggedIn(): any {
     console.log(LoginService.currentUser)
 
     if (LoginService.currentUser != "") {
       this.isLoggedIn = true;
+
+      
     }
     else if (LoginService.currentUser = "") {
       this.isLoggedIn = false
     }
   }
+
+
 }
 
 

@@ -22,7 +22,7 @@ export class LoginService {
     this.http = http;
   }
   static currentUser: string = "";
-  
+   currentUserProfile: UserProfileData;
   baseUrl = getBaseUrl();
   register(email: string, password: string, firstName: string, birthDate: Date,mantra:string,foodRegimenFk:number,philosophySchoolFk:number) {
 
@@ -42,12 +42,19 @@ export class LoginService {
       console.log(result)
       if (result === true) {
         LoginService.currentUser = email;
+        this.currentUserProfile = this.getProfileDetails(LoginService.currentUser);
       }
       console.log(LoginService.currentUser)
       this.route.navigateByUrl('');
 
     })
     
+  }
+
+  getProfileDetails(email: string):any
+  {
+
+  return this.http.get<any>(this.baseUrl + 'api/Login/details/email=' + email)
   }
 
 }
