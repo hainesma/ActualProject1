@@ -24,7 +24,7 @@ namespace ActualProject1.Models
         public virtual DbSet<DailySurvey> DailySurveys { get; set; }
         public virtual DbSet<FoodRegimen> FoodRegimens { get; set; }
         public virtual DbSet<PhilosophySchool> PhilosophySchools { get; set; }
-        public virtual DbSet<UserProfile> UserProfiles { get; set; }
+        public virtual DbSet<UserProfiles> UserProfiles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -59,7 +59,7 @@ namespace ActualProject1.Models
                 entity.Property(e => e.Name).HasMaxLength(25);
             });
 
-            modelBuilder.Entity<UserProfile>(entity =>
+            modelBuilder.Entity<UserProfiles>(entity =>
             {
                 entity.Property(e => e.BirthDate).HasColumnType("date");
 
