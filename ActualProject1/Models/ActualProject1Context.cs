@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using ActualProject1.Models;
+using Project2_WellnessAppDbFirst.Models;
 
 #nullable disable
 
