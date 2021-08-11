@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace ActualProject1.Models
 {
-    public partial class UserProfile
+    public partial class UserProfiles
     {
-        public UserProfile()
+        public UserProfiles()
         {
             DailySurveys = new HashSet<DailySurvey>();
         }

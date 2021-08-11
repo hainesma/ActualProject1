@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using ActualProject1.Models;
 #nullable disable
 
 namespace ActualProject1.Models
@@ -14,6 +14,6 @@ namespace ActualProject1.Models
         public string DailyGoal { get; set; }
         public bool? PreviousGoalAchieved { get; set; }
 
-        public virtual UserProfile User { get; set; }
+        public virtual UserProfiles User { get; set; }
     }
 }

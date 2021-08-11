@@ -1,0 +1,29 @@
+<div style="border: 1px solid red">UserProfile Component</div>
+
+<div>
+  <form #profileForm="ngForm" (ngSubmit)="postUserProfile(profileForm)">
+    <input ngModel type="text" id="userProfile" name="email" placeholder="Email" />
+    <input ngModel type="password" id="userProfile" name="password" placeholder="password" />
+
+    <input ngModel type="text" id="userProfile" name="firstName" placeholder="First Name" />
+    <br />
+    <input ngModel type="date" id="userProfile" name="birthDate" placeholder="Birth Date" />
+    <br />
+    <input ngModel type="text" id="userProfile" name="mantra" placeholder="Mantra" />
+    <div>
+      <select ngModel name="foodRegimenFk">
+        <option value="1">Vegan</option>
+        <option value="2">Keto</option>
+        <option value="3">Paleo</option>
+      </select>
+    </div>
+    <div>
+      <select ngModel name="philosophySchoolFk">
+        <option value="1">Stoic</option>
+        <option value="2">Kanye</option>
+        <option value="3">Buddha</option>
+      </select>
+    </div>
+    <input type="submit" />
+  </form>
+</div>

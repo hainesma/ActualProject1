@@ -9,12 +9,12 @@ namespace ActualProject1.Models
     {
         public FoodRegimen()
         {
-            UserProfiles = new HashSet<UserProfile>();
+            UserProfiles = new HashSet<UserProfiles>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<UserProfile> UserProfiles { get; set; }
+        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
     }
 }

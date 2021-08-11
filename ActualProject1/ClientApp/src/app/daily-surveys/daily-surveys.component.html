@@ -1,0 +1,56 @@
+<h1>Assessment Manager</h1>
+<button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Take a new assessment</button>
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Assessment</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #addSurveyForm="ngForm" (ngSubmit)="addSurvey(addSurveyForm)">
+      <h3>How are you feeling today?</h3>
+      <input type="radio" ngModel id="survey" name="emotion" value="4">
+      <label for="happy">:)</label>
+      <input type="radio" ngModel id="survey" name="emotion" value="3">
+      <label for="okay">:\</label>
+      <input type="radio" ngModel id="survey" name="emotion" value="2">
+      <label for="alright">:|</label>
+      <input type="radio" ngModel id="survey" name="emotion" value="1">
+      <label for="bad">:(</label>
+      <br />
+      <br />
+      <h2>What's your energy level?</h2>
+      <div class="slidecontainer">
+      <input ngModel type="range" min="1" max="10" id="myRange" value="5" name="energyLevel" oninput="this.nextElementSibling.value = this.value"><output>5</output>
+      </div>
+
+      <br />
+      <h3>Set a goal for today</h3>
+      <input ngModel type="text" id="survey" name="goal" placeholder="New Daily Goal" />
+      <br />
+      <br />
+      <h3>Did you accomplish your previous goal?</h3>
+      <br />
+      <input type="radio" ngModel id="survey" name="previousGoalAchieved" value="true">
+      <label for="true">Yes</label>
+      <input type="radio" ngModel id="survey" name="previousGoalAchieved" value="False">
+      <label for="true">No</label>
+      <br />
+      <br />
+      <br />
+      <div class="modal-footer">
+      </div>
+      <input class="btn btn-outline-dark" type="submit" name="Submit Assessment" />
+    </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </ng-template>
+<h3>Past Asessments</h3>
+<div *ngFor="let s of surveys">
+  <a [routerLink]="['/survey',s.Id]"> Assessment:{{s.Id}}</a>
+  <button type="button" class="close" aria-label="Close" (click)="removeSurvey(s.Id)">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
