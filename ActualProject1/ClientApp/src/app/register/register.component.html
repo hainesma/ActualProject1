@@ -1,32 +1,48 @@
-<h2> Register User Profile</h2>
+<div class="card text-center card-width-component">
+  <div class="card-header">
+  
+  </div>
 
-<div>
+  <div class="card-body">
+  
+
+<h5 class="card-title"> Register User Profile</h5>
+
+<div class="form-container">
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
-    <input ngModel type="text" id="userProfile" name="email" placeholder="Email" />
+    <input class="float-left" ngModel type="text" id="userProfile" name="email" placeholder="Email" />
     <br />
     <br />
-    <input ngModel type="password" id="userProfile" name="password" placeholder="password" />
+    <input class="float-left" ngModel type="password" id="userProfile" name="password" placeholder="password" />
     <br />
     <br />
-    <input ngModel type="text" id="userProfile" name="firstName" placeholder="First Name" />
+    <input class="float-left" ngModel type="text" id="userProfile" name="firstName" placeholder="First Name" />
     <br />
     <br />
-    <input ngModel type="date" id="userProfile" name="birthDate" placeholder="Birth Date" />
+    <input class="float-left" ngModel type="date" id="userProfile" name="birthDate" placeholder="Birth Date" />
     <br />
     <br />
-    <input ngModel type="text" id="userProfile" name="mantra" placeholder="Mantra" />
+    <input class="float-left" ngModel type="text" id="userProfile" name="mantra" placeholder="Mantra" />
     <br />
     <br />
-    <div>
+    <div class="float-left">
       <select ngModel name="foodRegimenFk">
-        <option value="1">Vegan</option>
-        <option value="2">Keto</option>
-        <option value="3">Paleo</option>
+        <option value="vegan">Vegan</option>
+        <option value="keto-friendly">Keto</option>
+        <option value="paleo">Paleo</option>
+        <option value="egg-free">Egg Free</option>
+        <option value="fodmap-free">FODMAP Free</option>
+        <option value="gluten-free">Gluten Free</option>
+        <option value="kosher">Kosher</option>
+        <option value="tree-nut-free">Tree Nut Free</option>
+        <option value="low-sugar">Low Sugar</option>
+        <option value="soy-free">Soy Free</option>
+        <option value="kidney-friendly">Kidney Friendly</option>
       </select>
     </div>
     <br />
     <br />
-    <div>
+    <div class="float-left">
       <select ngModel name="philosophySchoolFk">
         <option value="1">Stoic</option>
         <option value="2">Kanye</option>
@@ -37,4 +53,10 @@
     <br />
     <input type="submit" />
   </form>
+</div>
+
+</div>
+<div class="card-footer text-muted">
+  
+</div>
 </div>

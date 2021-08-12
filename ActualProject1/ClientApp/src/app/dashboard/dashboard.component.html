@@ -1,8 +1,24 @@
+<div class="card text-center card-width-dashboard">
+  <div class="card-header">
+  
+  </div>
+  <img class="image banner" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg" />
+  <div class="card-body">
+    
+  
+    
+
+
 
 <!--This is the dashboard page need to load active user First Name into this html page-->
 
 <div>
-  <h1 style="text-align:center">Welcome </h1>
+  
+  <h1 class="card-title">Welcome back, User</h1>
+</div>
+
+<div>
+<app-daily-surveys></app-daily-surveys>
 </div>
 
 <div>
@@ -34,15 +50,21 @@
     Inspiration
   </h2>
   <!--These divs need to have an *ngIf statement that pulls in the users selected philosophy preference from the survey-->
-  <div>
+  <div *ngIf="isCurrentPhilosophyStoic">
     <app-stoic-quote></app-stoic-quote>
   </div>
 
-  <div>
+  <div *ngIf="isCurrentPhilosophyKanye">
     <app-kanye></app-kanye>
   </div>
 
-  <div>
+  <div *ngIf="isCurrentPhilosophyBuddha">
     <app-buddha></app-buddha>
   </div>
+</div>
+
+
+</div>
+<div class="card-footer text-muted">
+</div>
 </div>
