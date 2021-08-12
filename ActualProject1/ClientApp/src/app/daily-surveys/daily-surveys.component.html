@@ -23,24 +23,24 @@
       <input type="radio" ngModel id="survey" name="emotion" value="4">
       <label for="happy">:)</label>
       <input type="radio" ngModel id="survey" name="emotion" value="3">
-      <label for="okay">:\</label>
+      <label for="okay">:|</label>
       <input type="radio" ngModel id="survey" name="emotion" value="2">
-      <label for="alright">:|</label>
+      <label for="alright">:\</label>
       <input type="radio" ngModel id="survey" name="emotion" value="1">
       <label for="bad">:(</label>
       <br />
       <br />
-      <h2>What's your energy level?</h2>
+      <h3>Pulse Check</h3>
+      <h3>What's your energy level?</h3>
       <div class="slidecontainer">
       <input ngModel type="range" min="1" max="10" id="myRange" value="5" name="energyLevel" oninput="this.nextElementSibling.value = this.value"><output>5</output>
       </div>
-
       <br />
       <h3>Set a goal for today</h3>
       <input ngModel type="text" id="survey" name="goal" placeholder="New Daily Goal" />
       <br />
       <br />
-      <h3>Did you accomplish your previous goal?</h3>
+      <h4>Did you achieve your previous goal?</h4>
       <br />
       <input type="radio" ngModel id="survey" name="previousGoalAchieved" value="true">
       <label for="true">Yes</label>
@@ -51,7 +51,7 @@
       <br />
       <div class="modal-footer">
       </div>
-      <input class="btn btn-outline-dark" type="submit" name="Submit Assessment" />
+      <input class="btn btn-success" type="submit" name="Submit Assessment" value="Commit To Greatness" />
     </form>
     </div>
     <div class="modal-footer">
@@ -63,12 +63,4 @@
   <button type="button" class="close" aria-label="Close" (click)="removeSurvey(s.Id)">
     <span aria-hidden="true">×</span>
   </button>
-</div>
-
-<!-- <a href="#" class="btn btn-primary">Sign up</a> -->
-
-</div>
-<div class="card-footer text-muted">
-  
-</div>
 </div>

@@ -4,6 +4,8 @@ import { DailySurveys } from './DailySurveys'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { DailySurveyService } from '../daily-survey.service';
+import { LoginService } from '../login.service';
+import { getBaseUrl } from '../../main';
 //import { UserProfile } from '../userProfile';
 //import { UserProfileService } from '../userProfile.service';
 //import { AuthorizeService } from '../../api-authorization/authorize.service';
@@ -23,23 +25,34 @@ export class DailySurveysComponent {
   closeResult: string;
   public apiBase: string = "";
   public http: HttpClient = null;
-  currentUserId: any;
+  public currentUserId: number;
 
     /** DailySurveys ctor */ 
-  constructor(private modalService: NgbModal, http: HttpClient/*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
-    http.get<DailySurveys[]>(baseUrl + 'api/dailysurveys').subscribe(result => {
-      this.surveys = result;
-      console.log(this.surveys);
-    }, error => console.error(error));
+  constructor(private modalService: NgbModal, http: HttpClient, private loginService: LoginService
+/*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
+    this.loginService.getProfileDetails(LoginService.currentUser).subscribe(result => {
+      console.log(result);
+      console.log(result.Id)
+      this.currentUserId = result.Id
+      console.log(this.currentUserId)
+      this.getSurveys(this.currentUserId)
+      //This is where you call your get surveys
+    })
+
+    
+   
 
     this.apiBase = baseUrl;
     this.http = http;
-    //{
-    //  this.authorize.getUser().subscribe((result): any => {
-    //    console.log(result)
-    //    this.currentUserId = result;
-    //  })
-    //}
+
+  }
+
+  getSurveys(Id: number) {
+    this.http.get<DailySurveys[]>(getBaseUrl() + 'api/dailysurveys/Id='+ Id).subscribe(result => {
+      this.surveys = result;
+      console.log(this.surveys);
+     }, error => console.error(error));
+
 
   }
  
@@ -47,22 +60,19 @@ export class DailySurveysComponent {
   addSurvey(form: NgForm) {
    
 
-    let Id = form.form.value.Id;
+   
     /** Attempting to connect Surveys to userprofiles  */
-    let UserId = parseInt(form.form.value.aspNetUserFk);
-    let emotion =  form.form.value.emotion * 1;
+    let userId = form.form.value.userId
+    let emotion =  parseInt(form.form.value.emotion);
     let goal = form.form.value.goal;
-    let achieved = form.form.value.previousGoalAchieved;
-    let energyLevel = form.form.value.energyLevel;
+    let achieved = form.form.value.previousGoalAchieved === "true" ;
+    let energyLevel = parseInt(form.form.value.energyLevel);
 
-    if (achieved === "") {
-      achieved = false;
-    }
 
-    let surveys: DailySurveys = { Id: 0, UserId: this.currentUserId.sub, emotionLevel: emotion, energyLevel: energyLevel,DailyGoal: goal, previousGoalAchieved: achieved}
+    let surveys: DailySurveys = { userId:6, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)
-    this.http.post<DailySurveys>(this.apiBase + 'api/dailysurveys', surveys).subscribe(result => {
+    this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {
       console.log(result)
 
       this.surveys.push(result); 

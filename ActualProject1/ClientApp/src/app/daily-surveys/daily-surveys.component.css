@@ -3,6 +3,8 @@ input[type="radio"] {
 }
 .slidecontainer {
   width: 35%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .slider {
@@ -35,4 +37,13 @@ input[type="radio"] {
     background: #04AA6D;
     cursor: pointer;
   }
-
+.modal-body {
+  text-align: center;
+ /* width: 100%;*/
+  font-family: Verdana;
+  font-weight:200;
+}
+.modal-title {
+  text-align: center;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serifl;
+}

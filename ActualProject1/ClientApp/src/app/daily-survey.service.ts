@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from "rxjs";
 import { DailySurveys } from './daily-surveys/dailysurveys';
 
 
@@ -8,18 +9,25 @@ import { DailySurveys } from './daily-surveys/dailysurveys';
 })
 
 export class DailySurveyService {
-
-  constructor(private http: HttpClient) {
-
+  surveys: DailySurveys;
+  dailySurveysUrl: string;
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this.dailySurveysUrl = baseUrl + 'api/DailySurveys'
   }
 
-  controller: string = '';
-  baseURL: string = 'https://localhost:44314/api/${this.controller}'
 
   //---API calls---
 
-  getSurvey(): any {
-    this.controller = 'DailySurveys'
-    return this.http.get<DailySurveys>(this.baseURL);
+  getSurvey(@Inject('BASE_URL') baseUrl: string): any {
+    return this.http.get<DailySurveys[]>(baseUrl + 'api/DailySurveys');
+  }
+
+  postSurvey(surveys: DailySurveys): Observable<DailySurveys> {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+      });
+
+      console.log(surveys);
+      return this.http.post<DailySurveys>(this.dailySurveysUrl, surveys, {headers: headers})
   }
 }
