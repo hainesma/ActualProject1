@@ -1,7 +1,7 @@
 export interface DailySurveys {
-  UserId: number;
+  userId: number;
   emotionLevel: number;
-  EnergyLevel: number;
-  DailyGoal: string; 
+  energyLevel: number;
+  dailyGoal: string; 
   previousGoalAchieved: boolean; 
 }

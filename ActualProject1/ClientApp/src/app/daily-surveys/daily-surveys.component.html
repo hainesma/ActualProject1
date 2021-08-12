@@ -49,7 +49,7 @@
   </ng-template>
 <h3>Past Asessments</h3>
 <div *ngFor="let s of surveys">
-  <a [routerLink]="['/survey',s.Id]"> Assessment:{{s.Id}}</a>
+  <a [routerLink]="['/survey-details',s.Id]"> Assessment:{{s.Id}}</a>
   <button type="button" class="close" aria-label="Close" (click)="removeSurvey(s.Id)">
     <span aria-hidden="true">×</span>
   </button>
