@@ -4,6 +4,8 @@ import { DailySurveys } from './DailySurveys'
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms';
 import { DailySurveyService } from '../daily-survey.service';
+import { LoginService } from '../login.service';
+import { getBaseUrl } from '../../main';
 //import { UserProfile } from '../userProfile';
 //import { UserProfileService } from '../userProfile.service';
 //import { AuthorizeService } from '../../api-authorization/authorize.service';
@@ -23,16 +25,34 @@ export class DailySurveysComponent {
   closeResult: string;
   public apiBase: string = "";
   public http: HttpClient = null;
+  public currentUserId: number;
 
     /** DailySurveys ctor */ 
-  constructor(private modalService: NgbModal, http: HttpClient/*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
-    http.get<DailySurveys[]>(baseUrl + 'api/dailysurveys').subscribe(result => {
-      this.surveys = result;
-      console.log(this.surveys);
-    }, error => console.error(error));
+  constructor(private modalService: NgbModal, http: HttpClient, private loginService: LoginService
+/*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
+    this.loginService.getProfileDetails(LoginService.currentUser).subscribe(result => {
+      console.log(result);
+      console.log(result.Id)
+      this.currentUserId = result.Id
+      console.log(this.currentUserId)
+      this.getSurveys(this.currentUserId)
+      //This is where you call your get surveys
+    })
+
+    
+   
 
     this.apiBase = baseUrl;
     this.http = http;
+
+  }
+
+  getSurveys(Id: number) {
+    this.http.get<DailySurveys[]>(getBaseUrl() + 'api/dailysurveys/Id='+ Id).subscribe(result => {
+      this.surveys = result;
+      console.log(this.surveys);
+     }, error => console.error(error));
+
 
   }
  
@@ -48,7 +68,7 @@ export class DailySurveysComponent {
     let achieved = form.form.value.previousGoalAchieved === "true" ;
     let energyLevel = parseInt(form.form.value.energyLevel);
 
-   
+
     let surveys: DailySurveys = { userId:6, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)

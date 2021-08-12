@@ -15,6 +15,8 @@ namespace ActualProject1.Controllers
     {
         private readonly ActualProject1Context _context;
 
+        ActualProject1Context db = new ActualProject1Context();
+
         public DailySurveysController(ActualProject1Context context)
         {
             _context = context;
@@ -39,6 +41,22 @@ namespace ActualProject1.Controllers
             }
 
             return dailySurveys;
+        }
+
+
+         [HttpGet("/Id={Id}")]
+        public List<DailySurveys> GetUserProfile(int Id)
+        {
+
+            List<DailySurveys> x = db.DailySurveys.Where(x => x.Id == Id).ToList();
+            if (x.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return x;
+            }
         }
 
         // PUT: api/DailySurveys/5
@@ -84,6 +102,7 @@ namespace ActualProject1.Controllers
 
             return CreatedAtAction("GetDailySurveys", new { id = dailySurveys.Id }, dailySurveys);
         }
+
 
         // DELETE: api/DailySurveys/5
         [HttpDelete("{id}")]
