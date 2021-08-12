@@ -33,12 +33,6 @@ export class DailySurveysComponent {
 
     this.apiBase = baseUrl;
     this.http = http;
-    //{
-    //  this.authorize.getUser().subscribe((result): any => {
-    //    console.log(result)
-    //    this.currentUserId = result;
-    //  })
-    //}
 
   }
  
@@ -46,19 +40,16 @@ export class DailySurveysComponent {
   addSurvey(form: NgForm) {
    
 
-    let Id = form.form.value.Id;
-    /** Attempting to connect Surveys to userprofiles  */
    
-    let emotion =  form.form.value.emotion * 1;
+    /** Attempting to connect Surveys to userprofiles  */
+    let userId = form.form.value.userId
+    let emotion =  parseInt(form.form.value.emotion);
     let goal = form.form.value.goal;
-    let achieved = form.form.value.previousGoalAchieved;
-    let EnergyLevel = form.form.value.EnergyLevel;
+    let achieved = form.form.value.previousGoalAchieved === "true" ;
+    let energyLevel = parseInt(form.form.value.energyLevel);
 
-    if (achieved === "") {
-      achieved = false;
-    }
-
-    let surveys: DailySurveys = { Id: 0, UserId:0, emotionLevel: emotion, EnergyLevel: EnergyLevel,DailyGoal: goal, previousGoalAchieved: achieved}
+   
+    let surveys: DailySurveys = { userId:6, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)
     this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {
