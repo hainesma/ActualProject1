@@ -24,7 +24,7 @@ export class RecipeComponent {
       console.log(result);
       console.log(result.foodRegimenFk)
       this.currentUserFoodRegimen = result.foodRegimenFk
-      this.singleRecipe = this.getRecipe();
+      this.getRecipe();
     })
     
     
