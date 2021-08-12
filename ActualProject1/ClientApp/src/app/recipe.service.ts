@@ -12,13 +12,6 @@ import { Secret } from './secrets';
 
 
 export class RecipeService {
-  
-  
-
-  constructor(private http: HttpClient, private loginService: LoginService) {
-  
-  }
-  
   public appId = "e3f8630c"
   public apiBase = "https://api.edamam.com/api/recipes/v2?type=public";
   /*  This is the search term we are searching we need to figure out what to do with*/
@@ -28,27 +21,35 @@ export class RecipeService {
   public searchTerm = "chicken";
   public FoodPreference = ""
 
+  
+
+  constructor(private http: HttpClient, private loginService: LoginService) {
+
+  }
+  
+ 
 
  
   
 
-  callRecipe() {
+  callRecipe(currentUserFoodRegimen:number) {
     //this method returns an observable containing an array of ALL hits returned by the edaman nutrition recipe search API
     //it will need to be subscribed in the component class later
 
-    let foodPreferenceID = this.loginService.currentUserProfile.foodRegimenFk;
+
+    //let foodPreferenceID = this.loginService.currentUserProfile.foodRegimenFk;
     //Let the ugly if chain begin!
-    if (foodPreferenceID === 1) { this.FoodPreference="vegan" }
-    if (foodPreferenceID === 2) { this.FoodPreference = "keto-friendly"}
-    if (foodPreferenceID === 3) { this.FoodPreference = "paleo" }
-    if (foodPreferenceID === 4) { this.FoodPreference = "egg-free"}
-    if (foodPreferenceID === 5) { this.FoodPreference = "fodmap-free" }
-    if (foodPreferenceID === 6) { this.FoodPreference = "gluten-free"}
-    if (foodPreferenceID === 7) { this.FoodPreference = "kosher"}
-    if (foodPreferenceID === 8) { this.FoodPreference = "tree-nut-free"}
-    if (foodPreferenceID === 9) { this.FoodPreference = "low-sugar"}
-    if (foodPreferenceID === 10) { this.FoodPreference = "soy-free"}
-    if (foodPreferenceID === 11) { this.FoodPreference = "kidney-friendly"}
+    if (currentUserFoodRegimen === 1) { this.FoodPreference="vegan" }
+    if (currentUserFoodRegimen === 2) { this.FoodPreference = "keto-friendly"}
+    if (currentUserFoodRegimen === 3) { this.FoodPreference = "paleo" }
+    if (currentUserFoodRegimen === 4) { this.FoodPreference = "egg-free"}
+    if (currentUserFoodRegimen === 5) { this.FoodPreference = "fodmap-free" }
+    if (currentUserFoodRegimen === 6) { this.FoodPreference = "gluten-free"}
+    if (currentUserFoodRegimen === 7) { this.FoodPreference = "kosher"}
+    if (currentUserFoodRegimen === 8) { this.FoodPreference = "tree-nut-free"}
+    if (currentUserFoodRegimen === 9) { this.FoodPreference = "low-sugar"}
+    if (currentUserFoodRegimen === 10) { this.FoodPreference = "soy-free"}
+    if (currentUserFoodRegimen === 11) { this.FoodPreference = "kidney-friendly"}
     console.log(this.FoodPreference)
 
     // Construct the API call

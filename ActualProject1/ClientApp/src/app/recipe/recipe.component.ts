@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { LoginService } from '../login.service';
 import { RecipeService } from '../recipe.service';
 import { Recipe, RecipeClass } from './recipe';
 
@@ -12,14 +13,20 @@ import { Recipe, RecipeClass } from './recipe';
 export class RecipeComponent {
   /** recipe ctor */
 
-  
+  public currentUserFoodRegimen: number
 
 
   public searchResult: Recipe;
   public singleRecipe: RecipeClass;
 
-  constructor(private api: RecipeService) {
-    this.singleRecipe = this.getRecipe();
+  constructor(private api: RecipeService, private loginService: LoginService) {
+    this.loginService.getProfileDetails(LoginService.currentUser).subscribe(result => {
+      console.log(result);
+      console.log(result.foodRegimenFk)
+      this.currentUserFoodRegimen = result.foodRegimenFk
+      this.singleRecipe = this.getRecipe();
+    })
+    
     
   }
   
@@ -32,7 +39,7 @@ getRecipe():any {
   //this.api.callRecipe(searchTerm, foodprefernce)
   //I'm still unsure how to access these tables though
 
-  this.api.callRecipe().subscribe(result => {
+  this.api.callRecipe(this.currentUserFoodRegimen).subscribe(result => {
     this.searchResult = result;
     this.singleRecipe = this.searchResult.hits[0].recipe;
     //This next line is what calculates calories/serving for the given recipe

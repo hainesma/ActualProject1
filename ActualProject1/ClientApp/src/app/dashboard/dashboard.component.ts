@@ -28,7 +28,7 @@ export class DashboardComponent {
     })
 
     console.log(this.currentUserPhilosophyPref)
-    this.currentUserFoodRegimen = loginService.currentUserProfile.foodRegimenFk;
+   // this.currentUserFoodRegimen = loginService.currentUserProfile.foodRegimenFk;
   //  console.log(this.currentUserFoodRegimen)
   
   }
