@@ -31,9 +31,10 @@ export class LoginService {
     this.http.post<any>(this.baseUrl + 'api/Login/Register/email=' + email + '&pw=' + password + '&fname=' + firstName + '&date=' + birthDate + '&mantra=' + mantra + '&food=' + foodRegimenFk + '&philo=' + philosophySchoolFk, {}).subscribe(
 
       result => console.log(result)
-
       
-          )
+      
+    )
+    this.route.navigateByUrl('login');
   }
 
   login(email: string, password: string)
