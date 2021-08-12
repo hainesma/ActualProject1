@@ -13,7 +13,7 @@ namespace ActualProject1.Controllers
     public class LoginController : ControllerBase
     {
         ActualProject1Context db = new ActualProject1Context();
-        
+
         [HttpGet("pw={input}")]
         public string Encrypt(string input)
         {
@@ -26,7 +26,7 @@ namespace ActualProject1.Controllers
                 c = (char)(c + r.Next(-26, 27));
                 output.Add(c);
             }
-            
+
             if (output.Count < minLength)
             {
                 for (int i = output.Count; output.Count < 15; i++)
@@ -34,28 +34,64 @@ namespace ActualProject1.Controllers
                     string let = Char.ConvertFromUtf32(r.Next(65, 123));
                     output.Add(let[0]);
                 }
-                
+
             }
 
             return new string(output.ToArray());
         }
-        
-        [HttpPost("Register/name={uName}&pw={password}")]
-        public void Register(string email, string password)
+
+        [HttpPost("Register/email={email}&pw={password}&fname={firstName}&date={birthDate}&mantra={mantra}&food={foodRegimenFK}&philo={philosophySchoolFk}")]
+        public void Register(string email, string password, string firstName, DateTime birthDate, string mantra, int foodRegimenFK, int philosophySchoolFK)
         {
-            string hashed = Encrypt(email);
+            string hashed = Encrypt(password);
             UserProfiles u = new UserProfiles()
             {
                 Password = hashed,
-                Email = email
+                Email = email,
+                FirstName = firstName,
+                BirthDate = birthDate,
+                Mantra = mantra,
+                FoodRegimenFk = foodRegimenFK,
+                PhilosphySchoolFk = philosophySchoolFK,
             };
-            
+
             db.UserProfiles.Add(u);
             db.SaveChanges();
         }
-        
-        //public bool Login(string userName, string password)
-        //{
-        //}
+
+        [HttpGet("Login/email={email}&pw={password}")]
+        public bool Login(string email, string password)
+        {
+            string hashed = Encrypt(password);
+
+            List<UserProfiles> x = db.UserProfiles.Where(x => x.Email == email).ToList();
+            if (x.Count == 0)
+            { return false; }
+            else
+            {
+                if (hashed == x[0].Password)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        [HttpGet("details/email={email}")]
+        public UserProfiles GetUserProfile(string email)
+        {
+
+            List<UserProfiles> x = db.UserProfiles.Where(x => x.Email == email).ToList();
+            if (x.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return x[0];
+            }
+        }
     }
 }
