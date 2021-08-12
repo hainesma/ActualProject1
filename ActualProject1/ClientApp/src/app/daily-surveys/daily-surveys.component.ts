@@ -69,7 +69,7 @@ export class DailySurveysComponent {
     let energyLevel = parseInt(form.form.value.energyLevel);
 
 
-    let surveys: DailySurveys = { userId:6, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
+    let surveys: DailySurveys = { userId:0, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)
     this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {

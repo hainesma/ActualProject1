@@ -13,7 +13,7 @@ namespace ActualProject1.Controllers
     public class LoginController : ControllerBase
     {
         ActualProject1Context db = new ActualProject1Context();
-
+        
         [HttpGet("pw={input}")]
         public string Encrypt(string input)
         {
