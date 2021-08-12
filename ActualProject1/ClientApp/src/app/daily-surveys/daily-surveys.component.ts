@@ -33,14 +33,11 @@ export class DailySurveysComponent {
     this.loginService.getProfileDetails(LoginService.currentUser).subscribe(result => {
       console.log(result);
       console.log(result.id)
-      this.currentUserId = result.id
+      this.currentUserId = parseInt(result.id);
       console.log(this.currentUserId)
       this.getSurveys(this.currentUserId)
       //This is where you call your get surveys
     })
-
-    
-   
 
     this.apiBase = baseUrl;
     this.http = http;
@@ -59,23 +56,23 @@ export class DailySurveysComponent {
   /** function to add surveys to database */
   addSurvey(form: NgForm) {
    
-
-   
     /** Attempting to connect Surveys to userprofiles  */
     let userId = form.form.value.userId
+    let Id = form.form.value.Id
     let emotion =  parseInt(form.form.value.emotion);
     let goal = form.form.value.goal;
     let achieved = form.form.value.previousGoalAchieved === "true" ;
     let energyLevel = parseInt(form.form.value.energyLevel);
 
 
-    let surveys: DailySurveys = { userId:0, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
+    let surveys: DailySurveys = { userId: this.currentUserId, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
     console.log(achieved)
     console.log(surveys)
     this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {
       console.log(result)
 
-      this.surveys.push(result); 
+      this.surveys.push(result);
+      console.log(this.surveys);
     });
   }
 
@@ -83,10 +80,15 @@ export class DailySurveysComponent {
     let id: number = index;
     console.log(index);
     console.log(id);
-    this.http.delete<DailySurveys>(this.apiBase + 'api/dailysurveys/' + id).subscribe(result => {
+    this.http.delete<DailySurveys>(this.apiBase + 'api/dailysurveys/id' + id).subscribe(result => {
       console.log(result)
       this.surveys.splice(id, 1)
     });
+  }
+
+  refreshAndRemove(index: number) {
+    this.removeSurvey(index);
+    window.location.reload();
   }
 
 
