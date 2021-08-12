@@ -9,12 +9,12 @@ namespace ActualProject1.Models
     {
         public PhilosophySchool()
         {
-            UserProfiles = new HashSet<UserProfiles>();
+            UserProfile = new HashSet<UserProfile>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<UserProfiles> UserProfiles { get; set; }
+        public virtual ICollection<UserProfile> UserProfile { get; set; }
     }
 }

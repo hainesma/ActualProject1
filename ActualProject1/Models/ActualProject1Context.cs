@@ -1,8 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using ActualProject1.Models;
-using Project2_WellnessAppDbFirst.Models;
 
 #nullable disable
 
@@ -10,8 +8,6 @@ namespace ActualProject1.Models
 {
     public partial class ActualProject1Context : DbContext
     {
-        string connection = Secret.AzureString;
-
         public ActualProject1Context()
         {
         }
@@ -24,13 +20,14 @@ namespace ActualProject1.Models
         public virtual DbSet<DailySurveys> DailySurveys { get; set; }
         public virtual DbSet<FoodRegimen> FoodRegimens { get; set; }
         public virtual DbSet<PhilosophySchool> PhilosophySchools { get; set; }
-        public virtual DbSet<UserProfiles> UserProfiles { get; set; }
+        public virtual DbSet<UserProfile> UserProfile { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(connection);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=tcp:dream-team.database.windows.net,1433;Initial Catalog=ActualProject1;Persist Security Info=False;User ID=Project1;Password=wMRBWTRrDPyZw9RX;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -58,7 +55,7 @@ namespace ActualProject1.Models
                 entity.Property(e => e.Name).HasMaxLength(25);
             });
 
-            modelBuilder.Entity<UserProfiles>(entity =>
+            modelBuilder.Entity<UserProfile>(entity =>
             {
                 entity.Property(e => e.BirthDate).HasColumnType("date");
 
@@ -75,12 +72,12 @@ namespace ActualProject1.Models
                 entity.Property(e => e.PhilosphySchoolFk).HasColumnName("PhilosphySchoolFK");
 
                 entity.HasOne(d => d.FoodRegimenFkNavigation)
-                    .WithMany(p => p.UserProfiles)
+                    .WithMany(p => p.UserProfile)
                     .HasForeignKey(d => d.FoodRegimenFk)
                     .HasConstraintName("FK__UserProfi__FoodR__60A75C0F");
 
                 entity.HasOne(d => d.PhilosphySchoolFkNavigation)
-                    .WithMany(p => p.UserProfiles)
+                    .WithMany(p => p.UserProfile)
                     .HasForeignKey(d => d.PhilosphySchoolFk)
                     .HasConstraintName("FK__UserProfi__Philo__619B8048");
             });

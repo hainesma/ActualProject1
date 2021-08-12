@@ -27,8 +27,9 @@ export class LoginService {
   currentUserProfile: UserProfileData;
 
   baseUrl = getBaseUrl();
-  register(email: string, password: string, firstName: string, birthDate: Date, mantra: string, foodRegimenFk: number, philosophySchoolFk: number) {
 
+  register(email: string, password: string, firstName: string, birthDate: Date, mantra: string, foodRegimenFk:number,philosophySchoolFk:number) {
+    
     let profileData: UserProfileData = { firstName: firstName, birthDate: birthDate, mantra: mantra, foodRegimenFk: foodRegimenFk, philosophySchoolFk: philosophySchoolFk }
     console.log(profileData)
     this.http.post<any>(this.baseUrl + 'api/Login/Register/email=' + email + '&pw=' + password + '&fname=' + firstName + '&date=' + birthDate + '&mantra=' + mantra + '&food=' + foodRegimenFk + '&philo=' + philosophySchoolFk, {}).subscribe(

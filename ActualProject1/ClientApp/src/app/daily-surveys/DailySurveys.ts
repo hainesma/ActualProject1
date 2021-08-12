@@ -1,5 +1,4 @@
 export interface DailySurveys {
-  Id: number;
   userId: number;
   emotionLevel: number;
   energyLevel: number;

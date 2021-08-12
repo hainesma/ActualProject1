@@ -32,8 +32,8 @@ export class DailySurveysComponent {
 /*, private userProfileService: UserProfileService*/,/* private authorize: AuthorizeService,*/ @Inject('BASE_URL') baseUrl: string) {
     this.loginService.getProfileDetails(LoginService.currentUser).subscribe(result => {
       console.log(result);
-      console.log(result.Id)
-      this.currentUserId = result.Id
+      console.log(result.id)
+      this.currentUserId = result.id
       console.log(this.currentUserId)
       this.getSurveys(this.currentUserId)
       //This is where you call your get surveys
@@ -66,6 +66,7 @@ export class DailySurveysComponent {
 
 
     let surveys: DailySurveys = { Id: 0, userId:6, emotionLevel: emotion, energyLevel: energyLevel,dailyGoal: goal, previousGoalAchieved: achieved}
+
     console.log(achieved)
     console.log(surveys)
     this.http.post<DailySurveys>(this.apiBase + 'api/DailySurveys', surveys).subscribe(result => {

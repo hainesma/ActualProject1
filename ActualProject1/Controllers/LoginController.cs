@@ -13,7 +13,7 @@ namespace ActualProject1.Controllers
     public class LoginController : ControllerBase
     {
         ActualProject1Context db = new ActualProject1Context();
-
+        
         [HttpGet("pw={input}")]
         public string Encrypt(string input)
         {
@@ -44,7 +44,7 @@ namespace ActualProject1.Controllers
         public void Register(string email, string password, string firstName, DateTime birthDate, string mantra, int foodRegimenFK, int philosophySchoolFK)
         {
             string hashed = Encrypt(password);
-            UserProfiles u = new UserProfiles()
+            UserProfile u = new UserProfile()
             {
                 Password = hashed,
                 Email = email,
@@ -55,7 +55,7 @@ namespace ActualProject1.Controllers
                 PhilosphySchoolFk = philosophySchoolFK,
             };
 
-            db.UserProfiles.Add(u);
+            db.UserProfile.Add(u);
             db.SaveChanges();
         }
 
@@ -64,7 +64,7 @@ namespace ActualProject1.Controllers
         {
             string hashed = Encrypt(password);
 
-            List<UserProfiles> x = db.UserProfiles.Where(x => x.Email == email).ToList();
+            List<UserProfile> x = db.UserProfile.Where(x => x.Email == email).ToList();
             if (x.Count == 0)
             { return false; }
             else
@@ -80,10 +80,10 @@ namespace ActualProject1.Controllers
             }
         }
         [HttpGet("details/email={email}")]
-        public UserProfiles GetUserProfile(string email)
+        public UserProfile GetUserProfile(string email)
         {
 
-            List<UserProfiles> x = db.UserProfiles.Where(x => x.Email == email).ToList();
+            List<UserProfile> x = db.UserProfile.Where(x => x.Email == email).ToList();
             if (x.Count == 0)
             {
                 return null;
