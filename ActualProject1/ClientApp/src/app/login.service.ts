@@ -17,13 +17,17 @@ import { UserProfile } from './user-profile/userProfile';
 
 export class LoginService {
   http: HttpClient
-  constructor(http: HttpClient, private route:Router) {
+
+  constructor(http: HttpClient, private route: Router) {
 
     this.http = http;
   }
   static currentUser: string = "";
-   currentUserProfile: UserProfileData;
+
+  currentUserProfile: UserProfileData;
+
   baseUrl = getBaseUrl();
+
   register(email: string, password: string, firstName: string, birthDate: Date, mantra: string, foodRegimenFk:number,philosophySchoolFk:number) {
     
     let profileData: UserProfileData = { firstName: firstName, birthDate: birthDate, mantra: mantra, foodRegimenFk: foodRegimenFk, philosophySchoolFk: philosophySchoolFk }
@@ -32,8 +36,8 @@ export class LoginService {
 
       result => console.log(result)
 
-      
-          )
+
+    )
   }
 
   login(email: string, password: string)
@@ -56,6 +60,7 @@ export class LoginService {
   {
 
   return this.http.get<any>(this.baseUrl + 'api/Login/details/email=' + email)
+
   }
 
 }
