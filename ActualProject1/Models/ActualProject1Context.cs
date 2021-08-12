@@ -20,7 +20,7 @@ namespace ActualProject1.Models
         public virtual DbSet<DailySurveys> DailySurveys { get; set; }
         public virtual DbSet<FoodRegimen> FoodRegimens { get; set; }
         public virtual DbSet<PhilosophySchool> PhilosophySchools { get; set; }
-        public virtual DbSet<UserProfile> UserProfile { get; set; }
+        public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

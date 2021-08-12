@@ -55,7 +55,7 @@ namespace ActualProject1.Controllers
                 PhilosphySchoolFk = philosophySchoolFK,
             };
 
-            db.UserProfile.Add(u);
+            db.UserProfiles.Add(u);
             db.SaveChanges();
         }
 
@@ -64,7 +64,7 @@ namespace ActualProject1.Controllers
         {
             string hashed = Encrypt(password);
 
-            List<UserProfile> x = db.UserProfile.Where(x => x.Email == email).ToList();
+            List<UserProfile> x = db.UserProfiles.Where(x => x.Email == email).ToList();
             if (x.Count == 0)
             { return false; }
             else
@@ -83,7 +83,7 @@ namespace ActualProject1.Controllers
         public UserProfile GetUserProfile(string email)
         {
 
-            List<UserProfile> x = db.UserProfile.Where(x => x.Email == email).ToList();
+            List<UserProfile> x = db.UserProfiles.Where(x => x.Email == email).ToList();
             if (x.Count == 0)
             {
                 return null;

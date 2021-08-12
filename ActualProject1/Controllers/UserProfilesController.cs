@@ -22,14 +22,14 @@ namespace ActualProject1.Controllers
 
         // GET: api/UserProfiles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserProfiles>>> GetUserProfiles()
+        public async Task<ActionResult<IEnumerable<UserProfile>>> GetUserProfiles()
         {
             return await _context.UserProfiles.ToListAsync();
         }
 
         // GET: api/UserProfiles/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserProfiles>> GetUserProfiles(int id)
+        public async Task<ActionResult<UserProfile>> GetUserProfiles(int id)
         {
             var userProfiles = await _context.UserProfiles.FindAsync(id);
 
@@ -45,7 +45,7 @@ namespace ActualProject1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUserProfiles(int id, UserProfiles userProfiles)
+        public async Task<IActionResult> PutUserProfiles(int id, UserProfile userProfiles)
         {
             if (id != userProfiles.Id)
             {
@@ -77,7 +77,7 @@ namespace ActualProject1.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<UserProfiles>> PostUserProfiles(UserProfiles userProfiles)
+        public async Task<ActionResult<UserProfile>> PostUserProfiles(UserProfile userProfiles)
         {
             Console.WriteLine(userProfiles);
             _context.UserProfiles.Add(userProfiles);
@@ -88,7 +88,7 @@ namespace ActualProject1.Controllers
 
         // DELETE: api/UserProfiles/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<UserProfiles>> DeleteUserProfiles(int id)
+        public async Task<ActionResult<UserProfile>> DeleteUserProfiles(int id)
         {
             var userProfiles = await _context.UserProfiles.FindAsync(id);
             if (userProfiles == null)
