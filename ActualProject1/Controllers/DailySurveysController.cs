@@ -44,11 +44,11 @@ namespace ActualProject1.Controllers
         }
 
 
-         [HttpGet("/Id={Id}")]
-        public List<DailySurveys> GetUserProfile(int Id)
+         [HttpGet("/Id={id}")]
+        public List<DailySurveys> GetUserProfile(int id)
         {
 
-            List<DailySurveys> x = db.DailySurveys.Where(x => x.Id == Id).ToList();
+            List<DailySurveys> x = db.DailySurveys.Where(x => x.Id == id).ToList();
             if (x.Count == 0)
             {
                 return null;
